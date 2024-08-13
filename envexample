@@ -1,0 +1,9 @@
+TELEGRAM_TOKEN=your-telegram-bot-token
+ADMINS=admin1_id,admin2_id
+CHANNEL_ID=-your_channel_id
+GROUP_ID=-your_group_id
+CHANNEL_URL=https://t.me/YourChannel
+GROUP_URL=https://t.me/YourGroup
+SOCIAL_LINK_1=https://example.com/social1
+SOCIAL_LINK_2=https://example.com/social2
+DATABASE_PATH=bot_data.db
