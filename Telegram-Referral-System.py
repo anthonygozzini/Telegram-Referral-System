@@ -93,7 +93,7 @@ async def start(update: Update, context: CallbackContext) -> None:
         [InlineKeyboardButton("View Points", callback_data='view_points')]
     ]
 
-    if user_data and user_data[3]:  # Assuming wallet_address is at index 3
+    if user_data and user_data[2]:  # wallet_address is at index 2
         keyboard.append([InlineKeyboardButton("Show Referral Link", callback_data='show_referral_link')])
     else:
         keyboard.append([InlineKeyboardButton("Referral Link", callback_data='referral_link_not_available')])
@@ -152,6 +152,16 @@ async def handle_wallet_address(update: Update, context: CallbackContext) -> Non
         else:
             await update.message.reply_text("You need to join the channel and group before proceeding.")
         context.user_data[ADDING_WALLET] = False
+
+async def join_channel(update: Update, context: CallbackContext) -> None:
+    await update.message.reply_text(f"Please join our channel: {CHANNEL_URL}")
+
+async def join_group(update: Update, context: CallbackContext) -> None:
+    await update.message.reply_text(f"Please join our group: {GROUP_URL}")
+
+async def submit_wallet_address(update: Update, context: CallbackContext) -> None:
+    context.user_data[ADDING_WALLET] = True
+    await update.message.reply_text("Please enter your EVM wallet address:")
 
 async def verify_membership(bot, user_id):
     try:
